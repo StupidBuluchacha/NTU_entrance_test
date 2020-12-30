@@ -1,5 +1,6 @@
 # for data copy
 import copy
+
 # open input file
 with open('input_question_4') as file:
     # deal with data of input file
