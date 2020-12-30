@@ -54,10 +54,10 @@ def is_point_in_polygon(point, points):
         if (point.lng == point_start.lng and point.lat == point_start.lat) or (
                 point.lng == point_end.lng and point.lat == point_end.lat):
             return True
-        # 判断线段两端点是否在射线两侧
+        # check whether vertices of line segment are on the two sides of half-line
         if (point_end.lat < point.lat <= point_start.lat) or (
                 point_end.lat >= point.lat > point_start.lat):
-            # 线段上与射线 Y 坐标相同的点的 X 坐标
+            # X coordinate in line segment with same y coordinate of half line
             if point_end.lat == point_start.lat:
                 x = (point_start.lng + point_end.lng) / 2
             else:
@@ -67,7 +67,7 @@ def is_point_in_polygon(point, points):
             # point is on the polygon bound
             if x == point.lng:
                 return True
-            # 射线穿过多边形的边界
+            # half-line is through the bound of polygon
             if x > point.lng:
                 flag = not flag
             else:
